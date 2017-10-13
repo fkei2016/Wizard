@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Magic_Firebolt : MagicScript
+public class Magic_LightningStrike : Magic_Attack
 {
 
 	// Use this for initialization
@@ -10,10 +10,8 @@ public class Magic_Firebolt : MagicScript
 		
 	}
 
-    void Invoke()
+    public override void CastSpell()
     {
-        Debug.Log("Fire bolt was invoked!");
+        Debug.Log("Lightning strike was invoked!");
     }
-     
-
 }
