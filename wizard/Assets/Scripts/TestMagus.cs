@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestMagus : MonoBehaviour {
     public MagicScript[] Larned;
-    provate 
+     
 
     // Use this for initialization
     void Start () {

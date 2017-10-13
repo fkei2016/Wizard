@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState : PlayerBase {
+public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
-	new void Start () {
-        base.Start();
+	void Start () {
+		
 	}
 	
-	
+	// Update is called once per frame
+	void Update () {
+		
+	}
 }
