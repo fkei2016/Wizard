@@ -73,7 +73,7 @@ public class PlayerBase : MonoBehaviour {
     //魔法を読み込む
     void LoadMagic() {
         //リストクラスから魔法を読み込む
-        WeakMagicList.LoadWeakMagic(magicData, PlayerID);
+        WeakMagicList.LoadWeakMagic(magicData, PlayerID, this);
     }
 
 }
