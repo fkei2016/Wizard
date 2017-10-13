@@ -25,8 +25,8 @@ public class MagicScript : MonoBehaviour {
     }
 
     //魔法を発動する
-    void Invoke()
-
+    public virtual void CastSpell()
     {
+       
     }
 }
