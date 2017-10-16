@@ -11,7 +11,7 @@ public class TestMagus : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-
+        Debug.Log("s");
     }
 	
 	// Update is called once per frame

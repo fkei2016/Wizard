@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Magic_FireBall : Magic_Unique
+public class Magic_FireBall : Magic_Attack
+
 {
 
 	// Use this for initialization

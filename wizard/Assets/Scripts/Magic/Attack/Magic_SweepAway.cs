@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Magic_SweepAway : Magic_Support
+public class Magic_SweepAway : Magic_Attack
 {
 
 	// Use this for initialization

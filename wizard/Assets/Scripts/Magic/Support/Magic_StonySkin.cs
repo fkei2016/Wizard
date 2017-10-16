@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Magic_FireBolt : Magic_BasicAttack
+public class Magic_StonySkin : Magic_Support
 {
 
 	// Use this for initialization
@@ -12,6 +12,6 @@ public class Magic_FireBolt : Magic_BasicAttack
 
     public override void CastSpell()
     {
-        Debug.Log("Fire bolt was invoked!");
+        Debug.Log("Stony skin was invoked!");
     }
 }
