@@ -19,6 +19,16 @@ public class MagicScript : MonoBehaviour {
         }
     }
 
+    protected int magicID;
+    public int m_MagicID
+    {
+        get
+        {
+            return magicID;
+        }
+    }
+
+
     // Use this for initialization
     void Start () {
 
