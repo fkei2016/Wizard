@@ -5,17 +5,24 @@ using UnityEngine.Events;
 
 public class PlayerBase : MonoBehaviour {
 
+    public enum MAGIC_SLOT {
+        ATTACK, //攻撃
+        SUPPORT //サポート
+    }
+
     //魔法に関するデータ
     public class MagicData {
-        public UnityAction deadlyAction = () => { }; //必殺魔法の処理
-        public UnityAction supportAction = () => { }; //補助魔法の処理
-        public UnityAction sMagicAction = () => { }; //強魔法の処理
-        public UnityAction wMagicAction = () => {}; //弱魔法の処理
+        public Magic magic1 = new Magic(); //wキー担当
+        public Magic magic2 = new Magic(); //aキー担当
+        public Magic magic3 = new Magic(); //dキー担当
+        public Magic magic4 = new Magic(); //sキー担当
+    }
 
-        public float deadlyWaitTime = 0; //必殺魔法の待機時間
-        public float supportWaitTime = 0; //補助魔法の待機時間
-        public  float sMagicWaitTime = 0; //強攻撃の待機時間
-        public float wMagicWaitTime = 0; //弱攻撃の待機時間
+    //魔法に関する各データ
+    public class Magic {
+        public UnityAction action = () => { }; //魔法処理
+        public float waitTime; //待機時間
+        public MAGIC_SLOT slot; //魔法スロット
     }
 
 
@@ -24,6 +31,9 @@ public class PlayerBase : MonoBehaviour {
 
     [System.NonSerialized]
     int life = 100; //体力 
+
+    [System.NonSerialized]
+    bool isAlive = true; //生存しているか
 
     public int PlayerID; //プレイヤーのID
 
@@ -41,6 +51,16 @@ public class PlayerBase : MonoBehaviour {
         //魔法データを読み込む
         LoadMagic();
 	}
+
+    //Update
+    public virtual void Update() {
+        //待機時間を減らす
+        DecreaseWaitTime();
+    }
+
+
+
+
 	
 	//前進
     public void Advance(float mag) {
@@ -73,7 +93,36 @@ public class PlayerBase : MonoBehaviour {
     //魔法を読み込む
     void LoadMagic() {
         //リストクラスから魔法を読み込む
-        WeakMagicList.LoadWeakMagic(magicData, PlayerID, this);
+        ////////////////////////////////////////デバッグマジック
+        WeakMagicList.LoadMagic(magicData.magic1, 2, this);
+        //マジックデータ1
+        //WeakMagicList.LoadMagic(magicData.magic1, PlayerPrefs.GetInt(SaveDataKey.PLAYER_MAGIC1_KEY + PlayerID.ToString(), 0), this);
+        //マジックデータ2
+        WeakMagicList.LoadMagic(magicData.magic2, PlayerPrefs.GetInt(SaveDataKey.PLAYER_MAGIC2_KEY + PlayerID.ToString(), 0), this);
+        //マジックデータ3
+        WeakMagicList.LoadMagic(magicData.magic3, PlayerPrefs.GetInt(SaveDataKey.PLAYER_MAGIC3_KEY + PlayerID.ToString(), 0), this);
+        //マジックデータ4
+        WeakMagicList.LoadMagic(magicData.magic4, PlayerPrefs.GetInt(SaveDataKey.PLAYER_MAGIC4_KEY + PlayerID.ToString(), 0), this);
+    }
+
+    //待機時間を進める
+    void DecreaseWaitTime() {
+        if (magicData.magic1.waitTime > 0) magicData.magic1.waitTime -= Time.deltaTime;
+        if (magicData.magic2.waitTime > 0) magicData.magic2.waitTime -= Time.deltaTime;
+        if (magicData.magic3.waitTime > 0) magicData.magic3.waitTime -= Time.deltaTime;
+        if (magicData.magic4.waitTime > 0) magicData.magic4.waitTime -= Time.deltaTime;
+    }
+
+
+    //ダメージを受ける
+    public void Damage(int damage) {
+        life -= damage;
+        //体力が0以下なら死亡
+        if (life <= 0) {
+            isAlive = false;
+            Destroy(this.gameObject);
+        }
+
     }
 
 }

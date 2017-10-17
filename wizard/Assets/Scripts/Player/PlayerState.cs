@@ -8,6 +8,11 @@ public class PlayerState : PlayerBase {
 	new void Start () {
         base.Start();
 	}
+
+    public override void Update() {
+        base.Update();
+    }
+   
 	
 	
 }

@@ -19,13 +19,27 @@ public class PlayerAttack : MonoBehaviour {
 
     //攻撃使用
     void CheckUseMagic() {
-        //弱魔法
-        if(Input.GetAxisRaw("WeakMagic") != 0) {
-            pBase.magicData.wMagicAction.Invoke();
+        //wキー担当
+        if(Input.GetAxisRaw("Magic1") != 0 ) {
+            if (pBase.magicData.magic1.waitTime > 0) return;
+            //待機時間があるか
+            pBase.magicData.magic1.action.Invoke();
         }
-        //強魔法
-        //補助魔法
-        //必殺魔法
+        //aキー担当
+        else if (Input.GetAxisRaw("Magic2") != 0) {
+            if (pBase.magicData.magic2.waitTime > 0) return;
+            pBase.magicData.magic2.action.Invoke();
+        }
+        //dキー担当
+        else if (Input.GetAxisRaw("Magic3") != 0) {
+            if (pBase.magicData.magic3.waitTime > 0) return;
+            pBase.magicData.magic3.action.Invoke();
+        }
+        //sキー担当
+        else if (Input.GetAxisRaw("Magic4") != 0) {
+            if (pBase.magicData.magic4.waitTime > 0) return;
+            pBase.magicData.magic4.action.Invoke();
+        }
     }
 
 
