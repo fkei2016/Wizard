@@ -4,4 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: bc3448ede12ae9b4fa2dbccbac666bb4
+  - enabled: 1
+    path: Assets/Scenes/Select.unity
+    guid: 1270bf6c7e2506849b6a12e65cf47ed2
+  - enabled: 1
+    path: Assets/Scenes/MagicSelect.unity
+    guid: a7e5bd390bca0184cbf44ee97c82283c
+  - enabled: 1
+    path: Assets/Scenes/Play.unity
+    guid: 47156e4f559860348a6c5ff2fb0fde92
+  - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: 98e2684dd6fa20248a95ce86efa14dd5

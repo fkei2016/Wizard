@@ -17,10 +17,18 @@ public class NextScene : MonoBehaviour {
     [SerializeField]
     private GameScene nextScene;
 
-	// Use this for initialization
-	public void GoToScene() {
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GoToScene();
+        }
+    }
+
+    // Use this for initialization
+    void GoToScene() {
 
         SceneManager.LoadScene(nextScene.ToString());
     }
-
 }
