@@ -8,19 +8,31 @@ public class TestMagus : MonoBehaviour {
     [SerializeField]
     public MagicScript[] magic;
 
+    public GaugeControler ui;
+
+    private float maximumCoolTime;
+    private float coolTime;
     // Use this for initialization
     void Start () {
 
         Debug.Log("s");
+        maximumCoolTime = 20.0f;
+        coolTime = 0;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKeyDown("a"))
+		if(Input.GetKeyDown("a") && coolTime <= 0)
         {
+            coolTime = maximumCoolTime;
             magic[0].CastSpell();
         }
+        ui.setValue(maximumCoolTime, maximumCoolTime - coolTime);
 
-	}
+        coolTime-= 0.1f;
+
+        coolTime = Mathf.Clamp(coolTime, 0, maximumCoolTime);
+
+    }
 }
