@@ -25,6 +25,16 @@ public class PlayerBase : MonoBehaviour {
         public MAGIC_SLOT slot; //魔法スロット
     }
 
+    //補正一覧
+    [System.NonSerialized]
+    public float damageMag = 1f;//ダメージ補正
+    [System.NonSerialized]
+    public float speedMag = 1f; //速度補正
+    [System.NonSerialized]
+    public float destroyMag = 1f; //消滅時間補正
+    [System.NonSerialized]
+    public float waitTimeMag = 1f; //待機時間補正
+
 
     [System.NonSerialized]
     public MagicData magicData = new MagicData(); //魔法データ
@@ -94,7 +104,7 @@ public class PlayerBase : MonoBehaviour {
     void LoadMagic() {
         //リストクラスから魔法を読み込む
         ////////////////////////////////////////デバッグマジック
-        WeakMagicList.LoadMagic(magicData.magic1, 2, this);
+        WeakMagicList.LoadMagic(magicData.magic1, 5, this);
         //マジックデータ1
         //WeakMagicList.LoadMagic(magicData.magic1, PlayerPrefs.GetInt(SaveDataKey.PLAYER_MAGIC1_KEY + PlayerID.ToString(), 0), this);
         //マジックデータ2

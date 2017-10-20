@@ -36,6 +36,27 @@ public class WeakMagicList : MonoBehaviour {
                     obj.GetComponent<MagicBase>().Initialize(pBase);
                 };
                 break;
+            //ライトニング
+            case 3:
+                magic.action = () => {
+                    GameObject obj = CreateMagic("Magic/LightningStrike", magic, pBase);
+                    obj.GetComponent<MagicBase>().Initialize(pBase);
+                };
+                break;
+            //ファイアボール
+            case 4:
+                magic.action = () => {
+                    GameObject obj = CreateMagic("Magic/FireBall", magic, pBase);
+                    obj.GetComponent<MagicBase>().Initialize(pBase);
+                };
+                break;
+            //ナイフ
+            case 5:
+                magic.action = () => {
+                    GameObject obj = CreateMagic("Magic/AstralKnife", magic, pBase);
+                    obj.GetComponent<MagicBase>().Initialize(pBase);
+                };
+                break;
             //エラー
             default:
                 print("ERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRROOOOR");
@@ -52,11 +73,13 @@ public class WeakMagicList : MonoBehaviour {
 
 
         //消滅時間を設ける
-        Destroy(obj, obj.GetComponent<MagicBase>().destroyTime);
+        Destroy(obj, obj.GetComponent<MagicBase>().destroyTime * pBase.destroyMag);
         //クールタイムを設ける
-        magic.waitTime = obj.GetComponent<MagicBase>().waitTime;
+        magic.waitTime = obj.GetComponent<MagicBase>().waitTime * pBase.waitTimeMag;
         //自信を登録させる
         obj.GetComponent<MagicBase>().self = pBase.gameObject;
+        //ダメージ補正をかける
+        obj.GetComponent<MagicBase>().damage = (int)(obj.GetComponent<MagicBase>().damage * pBase.damageMag);
 
         return obj;
     }

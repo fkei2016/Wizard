@@ -24,7 +24,7 @@ public class PlayerMove : MonoBehaviour {
         //前進キーが押されているか
         if (Input.GetAxisRaw("Vertical") != 0) {
             //向いている方向に前進
-            pBase.Advance(Input.GetAxisRaw("Vertical"));
+            pBase.Advance(Input.GetAxisRaw("Vertical") * pBase.speedMag);
         }
         //前進キーが押されていない
         else {
