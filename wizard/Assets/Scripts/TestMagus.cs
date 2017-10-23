@@ -16,7 +16,7 @@ public class TestMagus : MonoBehaviour {
     void Start () {
 
         Debug.Log("s");
-        maximumCoolTime = 20.0f;
+        maximumCoolTime = 1.0f;
         coolTime = 0;
     }
 	
