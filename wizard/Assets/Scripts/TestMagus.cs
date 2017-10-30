@@ -9,6 +9,7 @@ public class TestMagus : MonoBehaviour {
     public MagicScript[] magic;
 
     public GaugeControler ui;
+    public BarGaugeControler ui2;
 
     private float maximumCoolTime;
     private float coolTime;
@@ -16,7 +17,7 @@ public class TestMagus : MonoBehaviour {
     void Start () {
 
         Debug.Log("s");
-        maximumCoolTime = 1.0f;
+        maximumCoolTime = 15.0f;
         coolTime = 0;
     }
 	
@@ -29,8 +30,9 @@ public class TestMagus : MonoBehaviour {
             magic[0].CastSpell();
         }
         ui.setValue(maximumCoolTime, maximumCoolTime - coolTime);
+        ui2.setValue(maximumCoolTime, coolTime);
 
-        coolTime-= 0.1f;
+        coolTime -= 0.1f;
 
         coolTime = Mathf.Clamp(coolTime, 0, maximumCoolTime);
 
