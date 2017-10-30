@@ -22,6 +22,7 @@ public class PlayerBase : MonoBehaviour {
     public class Magic {
         public UnityAction action = () => { }; //魔法処理
         public float waitTime; //待機時間
+        public float maximumWaitTime; //待機時間
         public MAGIC_SLOT slot; //魔法スロット
     }
 
@@ -54,8 +55,12 @@ public class PlayerBase : MonoBehaviour {
 
     Rigidbody rigid; //自身の剛体
 
-	// Use this for initialization
-	public void Start () {
+
+    //UI関連
+    public GaugeControler ui;
+
+    // Use this for initialization
+    public void Start () {
         rigid = this.GetComponent<Rigidbody>();
 
         //魔法データを読み込む
@@ -66,6 +71,9 @@ public class PlayerBase : MonoBehaviour {
     public virtual void Update() {
         //待機時間を減らす
         DecreaseWaitTime();
+
+
+        ui.setValue(magicData.magic1.maximumWaitTime, magicData.magic1.maximumWaitTime - magicData.magic1.waitTime);
     }
 
 

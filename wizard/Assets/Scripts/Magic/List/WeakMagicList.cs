@@ -76,6 +76,8 @@ public class WeakMagicList : MonoBehaviour {
         Destroy(obj, obj.GetComponent<MagicBase>().destroyTime * pBase.destroyMag);
         //クールタイムを設ける
         magic.waitTime = obj.GetComponent<MagicBase>().waitTime * pBase.waitTimeMag;
+        //クールタイム最大値を記録する
+        magic.maximumWaitTime = obj.GetComponent<MagicBase>().waitTime * pBase.waitTimeMag;
         //自信を登録させる
         obj.GetComponent<MagicBase>().self = pBase.gameObject;
         //ダメージ補正をかける
